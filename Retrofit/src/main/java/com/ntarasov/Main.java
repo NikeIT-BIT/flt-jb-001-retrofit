@@ -1,5 +1,7 @@
 package com.ntarasov;
 
+import com.ntarasov.request.AlbumRequest;
+import com.ntarasov.request.AlbumUpdateRequest;
 import com.ntarasov.request.PostCreateRequest;
 import com.ntarasov.request.PostUpdateRequest;
 import com.ntarasov.response.AlbumResponse;
@@ -86,5 +88,33 @@ public class Main {
                 throwable.printStackTrace();
             }
         });
+
+        System.out.println("------------------------ALBUMS------------------------");
+        List<AlbumResponse> albums = api.albums().execute().body();
+        System.out.println(albums);
+
+        System.out.println("------------------------ALBUMS WITH ID------------------------");
+        AlbumResponse albumsWithId = api.albumsWithId(1).execute().body();
+        System.out.println(albumsWithId);
+
+        System.out.println("------------------------ALBUM CREATE------------------------");
+        AlbumResponse albumCreate = api.albumCreate(AlbumRequest.builder()
+                .userId(10)
+                .title("New posts")
+                .build()).execute().body();
+        System.out.println(albumCreate);
+
+        System.out.println("------------------------ALBUM UPDATE------------------------");
+        AlbumResponse albumUpdate = api.albumUpdate(1, AlbumUpdateRequest.builder()
+                .userId(1)
+                .id(2)
+                .title("New posts")
+                .build()).execute().body();
+        System.out.println(albumUpdate);
+
+        System.out.println("------------------------ALBUM DELETE------------------------");
+        Boolean albumDelete = api.albumDelete(1).execute().isSuccessful();
+        System.out.println(albumDelete);
+
     }
 }
