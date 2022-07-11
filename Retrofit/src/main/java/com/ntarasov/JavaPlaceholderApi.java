@@ -44,4 +44,8 @@ public interface JavaPlaceholderApi {
     //    ------------------------USER ALBUMS------------------------
     @GET("/users/{id}/albums")
     Call<List<AlbumResponse>> userAlbums(@Path("id") Integer id);
+
+//    ------------------------ALBUMS------------------------
+    @GET("/albums")
+    Call<List<AlbumResponse>> albums();
 }

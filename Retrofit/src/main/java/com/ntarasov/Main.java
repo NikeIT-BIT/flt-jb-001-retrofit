@@ -86,5 +86,10 @@ public class Main {
                 throwable.printStackTrace();
             }
         });
+
+        System.out.println("------------------------ALBUMS------------------------");
+        List<AlbumResponse> albums = api.albums().execute().body();
+        System.out.println(albums);
+
     }
 }
