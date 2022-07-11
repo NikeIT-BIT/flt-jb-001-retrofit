@@ -8,7 +8,8 @@ import lombok.Setter;
 @Setter
 @Builder
 
-public class AlbumRequest {
+public class AlbumUpdateRequest {
     private Integer userId;
+    private Integer id;
     private String title;
 }

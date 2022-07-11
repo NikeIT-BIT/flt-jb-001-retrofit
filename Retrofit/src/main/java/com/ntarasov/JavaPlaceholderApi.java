@@ -1,5 +1,7 @@
 package com.ntarasov;
 
+import com.ntarasov.request.AlbumRequest;
+import com.ntarasov.request.AlbumUpdateRequest;
 import com.ntarasov.request.PostCreateRequest;
 import com.ntarasov.request.PostUpdateRequest;
 import com.ntarasov.response.AlbumResponse;
@@ -45,7 +47,23 @@ public interface JavaPlaceholderApi {
     @GET("/users/{id}/albums")
     Call<List<AlbumResponse>> userAlbums(@Path("id") Integer id);
 
-//    ------------------------ALBUMS------------------------
+    //    ------------------------ALBUMS------------------------
     @GET("/albums")
     Call<List<AlbumResponse>> albums();
+
+    //    ------------------------ALBUMS WITH ID------------------------
+    @GET("/albums/{id}")
+    Call<AlbumResponse> albumsWithId(@Path("id") Integer id);
+
+    //------------------------ALBUM CREATE------------------------
+    @POST("/albums")
+    Call<AlbumResponse> albumCreate(@Body AlbumRequest request);
+
+    //    ------------------------ALBUM UPDATE------------------------
+    @PUT("/albums/{id}")
+    Call<AlbumResponse> albumUpdate(@Path("id") Integer id, @Body AlbumUpdateRequest request);
+    //    ------------------------ALBUM DELETE------------------------
+
+    @DELETE("/posts/{id}")
+    Call<Void> albumDelete(@Path("id") Integer id);
 }
